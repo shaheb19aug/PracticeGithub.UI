@@ -3,7 +3,10 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ServiceComponent } from './students/service/service.component';
+
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -47,7 +50,8 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { TopNavComponent } from './layout/top-nav/top-nav.component';
 import { StudentsComponent } from './students/students.component';
-import { ServiceComponent } from './students/service/service.component';
+import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -57,6 +61,7 @@ import { ServiceComponent } from './students/service/service.component';
     ServiceComponent
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -95,7 +100,8 @@ import { ServiceComponent } from './students/service/service.component';
     MatTooltipModule,
     MatPaginatorModule,
     MatSortModule,
-    MatTableModule
+    MatTableModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

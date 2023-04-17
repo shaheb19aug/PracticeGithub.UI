@@ -1,1 +1,59 @@
-<p>This code is written inside student component.html</p>
+<div class="page-header">
+  <div class="container">
+    <h1>Students Details</h1>
+  </div>
+</div>
+
+<div class=container>
+  <div class="row end-xs mt-1">
+    <div class="col-xs-12">
+      <input type="text" class="search-input" placeholder="Search students"
+      [(ngModel)]="filterString"
+      (keyup)="filterStudents()"
+      >
+    </div>
+  </div>
+  <div class="mt-1" mat-elevation-z8>
+    <table mat-table matSort [dataSource]="dataSource" class="">
+
+      <!--FirstName Column-->
+      <ng-container matColumnDef="FirstName" >
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDesription="Sort by Name"> FirstName</th>
+          <td mat-cell *matCellDef="let students">{{students.firstName}}</td>
+      </ng-container>
+      <!--LastName Column-->
+      <ng-container matColumnDef="LastName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>LastName</th>
+          <td mat-cell *matCellDef="let students">{{students.lastName}}</td>
+      </ng-container>
+      <!--DateOfBirth Column-->
+      <ng-container matColumnDef="DateOfBirth">
+        <th mat-header-cell *matHeaderCellDef>DateOfBirth</th>
+          <td mat-cell *matCellDef="let students">{{students.dateOfBirth | date:'dd-mm-yyyy'}}</td>
+      </ng-container>
+      <!--Email Column-->
+      <ng-container matColumnDef="Email">
+        <th mat-header-cell *matHeaderCellDef>Email</th>
+          <td mat-cell *matCellDef="let students">{{students.email}}</td>
+      </ng-container>
+      <!--Mobile Column-->
+      <ng-container matColumnDef="Mobile">
+        <th mat-header-cell *matHeaderCellDef>Mobile</th>
+          <td mat-cell *matCellDef="let students">{{students.mobile}}</td>
+      </ng-container>
+        <!--Gender Column-->
+        <ng-container matColumnDef="Gender">
+          <th mat-header-cell *matHeaderCellDef>Gender</th>
+            <td mat-cell *matCellDef="let students">{{students.gender.description}}</td>
+        </ng-container>
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns:displayedColumns;"></tr>
+    </table>
+    <mat-paginator [length]="100"
+              [pageSize]="10"
+              [pageSizeOptions]="[5,10,100]"
+              aria-label="Select page">
+</mat-paginator>
+
+  </div>
+</div>
